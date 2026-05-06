@@ -1,3 +1,3 @@
 # test-chrome-extension
 
-- Simple Helloe World Extension
+- Simple Hello World Extension
