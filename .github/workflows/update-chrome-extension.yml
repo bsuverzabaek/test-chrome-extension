@@ -13,16 +13,11 @@ jobs:
       # 1. Checkout code from repository
       - name: Checkout repository
         uses: actions/checkout@v4
-      # 2. Build extension
-      - name: Build extension
-        run: |
-          npm install
-          npm build
-      # 3. Package the extension as a zip file
+      # 2. Package the extension as a zip file
       - name: Package extension
         run: |
           zip -r extension.zip ./build
-      # 4. Upload extension to Chrome Web Store (using chrome-webstore-upload-cli)
+      # 3. Upload extension to Chrome Web Store (using chrome-webstore-upload-cli)
       - name: Upload extension to Chrome Web Store
         env:
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
