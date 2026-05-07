@@ -23,6 +23,7 @@ jobs:
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
           CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
           REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
+          EXTENSION_ID: ${{ secrets.EXTENSION_ID }}
         run: |
           npm install chrome-webstore-upload-cli
-          npx chrome-webstore-upload-cli --client-id $CLIENT_ID --client-secret $CLIENT_SECRET --refresh-token $REFRESH_TOKEN --extension-id lnhbphijmndicpcgdpjeelcpefcmmpkg --zip ./extension.zip
+          npx chrome-webstore-upload-cli --client-id $CLIENT_ID --client-secret $CLIENT_SECRET --refresh-token $REFRESH_TOKEN --extension-id $EXTENSION_ID --zip ./extension.zip
