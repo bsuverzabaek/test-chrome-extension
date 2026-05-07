@@ -16,7 +16,7 @@ jobs:
       # 2. Package the extension as a zip file
       - name: Package extension
         run: |
-          zip -r extension.zip ./build
+          zip -r extension.zip . -x "node_modules/*" ".git/*" ".github/*"
       # 3. Upload extension to Chrome Web Store (using chrome-webstore-upload-cli)
       - name: Upload extension to Chrome Web Store
         env:
