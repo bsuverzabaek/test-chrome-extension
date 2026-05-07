@@ -1,8 +1,0 @@
-{
-  "name": "test-chrome-extension",
-  "version": "1.0.0",
-  "description": "Chrome extension",
-  "scripts": {
-    "build": "echo 'Building chrome extension...'"
-  }
-}
