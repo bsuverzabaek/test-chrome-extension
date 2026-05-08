@@ -17,13 +17,13 @@ jobs:
       - name: Package extension
         run: |
           zip -r extension.zip . -x "node_modules/*" ".git/*" ".github/*"
-      # 3. Upload extension to Chrome Web Store (using chrome-webstore-upload-cli)
+      # 3. Upload extension to Chrome Web Store (using cws-publish)
       - name: Upload extension to Chrome Web Store
-        env:
-          CLIENT_ID: ${{ secrets.CLIENT_ID }}
-          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
-          REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
-          EXTENSION_ID: ${{ secrets.EXTENSION_ID }}
-        run: |
-          npm install chrome-webstore-upload-cli
-          npx chrome-webstore-upload-cli --client-id $CLIENT_ID --client-secret $CLIENT_SECRET --refresh-token $REFRESH_TOKEN --extension-id $EXTENSION_ID --zip ./extension.zip
+        uses: mobilefirstllc/cws-publish@latest
+        with:
+          action: 'upload'
+          client_id: ${{ secrets.CLIENT_ID }}
+          client_secret: ${{ secrets.CLIENT_SECRET }}
+          refresh_token: ${{ secrets.REFRESH_TOKEN }}
+          extension_id: ${{ secrets.EXTENSION_ID }}
+          zip_file: ./extension.zip
