@@ -17,7 +17,7 @@ jobs:
       - name: Package extension
         run: |
           zip -r extension.zip . -x "node_modules/*" ".git/*" ".github/*"
-      # 3. Upload extension to Chrome Web Store (using cws-publish)
+      # 3. Upload extension to Chrome Web Store (using cws-publish) (upload only)
       - name: Upload extension to Chrome Web Store
         uses: mobilefirstllc/cws-publish@latest
         with:
