@@ -1,0 +1,29 @@
+name: Update Chrome Extension
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update_job:
+    name: update_job
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Checkout code from repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      # 2. Package the extension as a zip file
+      - name: Package extension
+        run: |
+          zip -r extension.zip . -x "node_modules/*" ".git/*" ".github/*"
+      # 3. Upload extension to Chrome Web Store (using cws-publish) (upload only)
+      - name: Upload extension to Chrome Web Store
+        uses: mobilefirstllc/cws-publish@latest
+        with:
+          action: 'upload'
+          client_id: ${{ secrets.CLIENT_ID }}
+          client_secret: ${{ secrets.CLIENT_SECRET }}
+          refresh_token: ${{ secrets.REFRESH_TOKEN }}
+          extension_id: ${{ secrets.EXTENSION_ID }}
+          zip_file: ./extension.zip
